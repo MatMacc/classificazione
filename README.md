@@ -23,7 +23,7 @@ Why you shouldn’t pick k “by eye”
 ## Distance Metrics Used in KNN Algorithm
 
 # Euclidean Distance
-![alt text](https://file%2B.vscode-resource.vscode-cdn.net/var/folders/sx/_nhtlzd51n1cwmrh6h_4fgy80000gn/T/TemporaryItems/NSIRD_screencaptureui_8p3yGd/Screenshot%202026-04-27%20at%2015.35.43.png?version%3D1777296965481)
+![alt text](https://www.delftstack.com/it/howto/numpy/calculate-euclidean-distance/)
 
 # Manhattan Distance
 ![alt text](https://file%2B.vscode-resource.vscode-cdn.net/var/folders/sx/_nhtlzd51n1cwmrh6h_4fgy80000gn/T/TemporaryItems/NSIRD_screencaptureui_zZ2iqc/Screenshot%202026-04-27%20at%2015.36.48.png?version%3D1777297019939)
