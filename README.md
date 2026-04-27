@@ -37,3 +37,14 @@ Why you shouldn’t pick k “by eye”
 - step 2: Calculating distance
 - step 3 : Finding Nearest Neighbors
 - step 4: Voting for Classification or Taking Average for Regression
+
+# Multinomial logistic regression 
+
+Multiclass logistic regression is a machine learning method used when the target variable has more than two categories. Unlike binary logistic regression which predicts two outcomes it helps classify data into three or more classes. It works by estimating the probability of each class and selecting the one with the highest probability as the prediction.
+
+
+How does it Work
+Multiclass logistic regression works by extending binary logistic regression to handle more than two classes.
+Instead of just separating two categories it calculates the probability of each class using the softmax function which ensures that the sum of all class probabilities is 1. During training the model learns separate weight vectors for each class.
+For a given input it computes a score for each class using dot product of weights and input features then applies softmax to convert these scores into probabilities. The class with the highest probability is chosen as the predicted label.
+This method is effective when the data is linearly separable and belongs to one of several mutually exclusive categories.
