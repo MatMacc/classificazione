@@ -50,3 +50,6 @@ Multiclass logistic regression works by extending binary logistic regression to 
 Instead of just separating two categories it calculates the probability of each class using the softmax function which ensures that the sum of all class probabilities is 1. During training the model learns separate weight vectors for each class.
 For a given input it computes a score for each class using dot product of weights and input features then applies softmax to convert these scores into probabilities. The class with the highest probability is chosen as the predicted label.
 This method is effective when the data is linearly separable and belongs to one of several mutually exclusive categories.
+
+# Metrics
+![Metrics](images/metrics.jpeg)
