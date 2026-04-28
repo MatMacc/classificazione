@@ -2,13 +2,14 @@ from fastapi import FastAPI
 from app.model import Iris
 import joblib
 import pandas as pd
+import numpy as np
 
 app = FastAPI()
 
 # carica modello (con pipeline inclusa)
 mlr_model= joblib.load("models/mlr_model_pipe.joblib")
 knn_model = joblib.load("models/mlr_model_pipe.joblib")
-
+columns = joblib.load("models/columns.joblib")
 
 # -------------------------
 # TEST ENDPOINT
@@ -24,29 +25,31 @@ def read_root():
 # -------------------------
 @app.post("/predict/mlr")
 def predict(data: Iris):
+    df = pd.DataFrame([data.model_dump()])  # con Pydantic v2 basta questo
+    df = df[columns]
 
-    # converte input in DataFrame
-    df = pd.DataFrame([data.model_dump() if hasattr(data, "model_dump") else data.dict()])
+    pred = mlr_model.predict(df)[0]
+    
+    if isinstance(pred, np.generic):
+        pred = pred.item()
 
-    # prediction
-    pred = mlr_model.predict(X)[0]
+    return {"Category": pred}
 
-    return {
-        "Category": pred
-    }
+
 
 @app.post("/predict/knn")
 def predict(data: Iris):
+    df = pd.DataFrame([data.model_dump()])  # con Pydantic v2 basta questo
+    df = df[columns]
 
-    # converte input in DataFrame
-    df = pd.DataFrame([data.model_dump() if hasattr(data, "model_dump") else data.dict()])
+    pred = knn_model.predict(df)[0]
+    
+    if isinstance(pred, np.generic):
+        pred = pred.item()
 
-    # prediction
-    pred = knn_model.predict(X)[0]
+    return {"Category": pred}
 
-    return {
-        "Category": pred
-    }
+ 
     
 # TO RUN ON TERMINAL DO : uvicorn app.main:app --reload
 
